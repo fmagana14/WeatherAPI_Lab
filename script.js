@@ -21,7 +21,8 @@ export async function getWeatherByZip(apikey, zip, unit = "imperial") {
 }
 
 // City:
-export async function getWeatherByCityId(apikey, city, unit = "imperial") {
+// https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+export async function getWeatherByCityName(apikey, city, unit = "imperial") {
   const path = `${BASE_URL}q=${city}&appid=${apikey}&units=${unit}`;
   const res = await fetch(path);
   return await res.json();
@@ -41,9 +42,3 @@ export async function getWeatherByGeo(apikey, coords, unit = "imperial") {
   return await res.json();
 }
 
-// https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-export async function getWeatherByCityName(apikey, city, unit = "imperial") {
-  const path = `${BASE_URL}q=${city}&appid=${apikey}&units=${unit}`;
-  const res = await fetch(path);
-  return await res.json();
-}
